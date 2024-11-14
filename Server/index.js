@@ -12,7 +12,11 @@ const { createServer } = require("http");
 const port = process.env.PORT || 5000;
 require("dotenv").config();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://realtime-chatapp-mern-frontend.onrender.com',  // Frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allowed methods
+  credentials: true,  // Allow credentials (cookies, HTTP authentication)
+}));
 app.use(express.json());
 app.use("/api/auth", userRoutes);
 app.use("/api/message", messageRoutes);
