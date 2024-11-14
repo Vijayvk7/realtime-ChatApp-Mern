@@ -9,7 +9,7 @@ exports.register = async (req, res, body) => {
     const emailCheck = await User.findOne({ email });
     if (emailCheck)
       return res.json({ msg: "Email already Used", status: false });
-    const hashedPassword = await argon2.hash(password, 10);
+    const hashedPassword = await argon2.hash(password);
     const user = await User.create({
       email,
       username,
@@ -29,7 +29,7 @@ exports.login = async (req, res, body) => {
     if (!user) {
       return res.json({ msg: "User not Found", status: false });
     }
-    const isPassword = await argon2.compare(password, user.password);
+    const isPassword = await argon2.verify(user.password,password);
     if (!isPassword) {
       return res.json({ msg: "Password is Incorrect", status: false });
     }
