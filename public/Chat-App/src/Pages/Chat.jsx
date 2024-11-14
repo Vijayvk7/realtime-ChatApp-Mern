@@ -10,7 +10,7 @@ import { io } from "socket.io-client";
 import ChatInput from "../Components/ChatInput";
 
 const Chat = () => {
-  const socket = useMemo(() => io("https://realtime-chatapp-mern-backend.onrender.com"), []);
+  const socket = useMemo(() => io("https://realtime-chatapp-mern.onrender.com"), []);
 
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
