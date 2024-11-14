@@ -37,7 +37,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: FRONTEND_URL,
+    origin: 'https://realtime-chatapp-mern-frontend.onrender.com',
     methods: ["GET", "POST"],
     credentials: true,
   },
